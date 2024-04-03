@@ -5,8 +5,8 @@ import itemControls from './templates/itemControls.html?raw'
 import { $, moveup, movedown, movetotop, movetobottom, moveswap, moveto, exportCsv, importCsv, selectRange, deselectRange, selectPattern, deselectPattern, deselectAll, moveselectedto, moveselectedtop, moveselectedbottom, handleStrayClick, viewProblemBank, fillAllStationInfo, getAllItems, updateSelectedCount, fillAllStationInfoCached } from './utils'
 
 function checks() {
-	if (!['psd.bits-pilani.ac.in', 'localhost', '127.0.0.1'].includes(location.hostname)) {
-		alert('Only works on http://psd.bits-pilani.ac.in')
+	if (!['psms-web.azureedge.net', 'localhost', '127.0.0.1'].includes(location.hostname)) {
+		alert('Only works on https://psms-web.azureedge.net')
 		return false
 	}
 
