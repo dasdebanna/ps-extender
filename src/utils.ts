@@ -316,11 +316,11 @@ export function importCsv() {
 export function viewProblemBank(node, { openInBackground = false, forFetch = false } = {}) {
   let stid = node.querySelector('.spanclass.uiicon').attributes.spn.value
   let fetchBody = { StationId: stid }
-  return fetch("http://psd.bits-pilani.ac.in/Student/ViewActiveStationProblemBankData.aspx/getPBPOPUP", {
+  return fetch("https://psms-web.azureedge.net/Student/ViewActiveStationProblemBankData.aspx/getPBPOPUP", {
     headers: {
       "content-type": "application/json; charset=UTF-8",
     },
-    referrer: "http://psd.bits-pilani.ac.in/Student/ViewActiveStationProblemBankData.aspx",
+    referrer: "https://psms-web.azureedge.net/Student/ViewActiveStationProblemBankData.aspx",
     referrerPolicy: "strict-origin-when-cross-origin",
     body: JSON.stringify(fetchBody),
     method: "POST",
@@ -367,7 +367,7 @@ export async function fillAllStationInfoCached() {
 export async function updateStationInfo(node) {
   const stid = node.querySelector('.spanclass.uiicon').attributes.spn.value
   const fetchBody = { StationId: stid }
-  return fetch("http://psd.bits-pilani.ac.in/Student/ViewActiveStationProblemBankData.aspx/getPBPOPUP", {
+  return fetch("https://psms-web.azureedge.net/Student/ViewActiveStationProblemBankData.aspx/getPBPOPUP", {
     headers: {
       "accept": "application/json, text/javascript, */*; q=0.01",
       "accept-language": "en-US,en;q=0.9",
@@ -377,7 +377,7 @@ export async function updateStationInfo(node) {
       "cache-control": "no-cache",
       "pragma": "no-cache",
     },
-    referrer: "http://psd.bits-pilani.ac.in/Student/ViewActiveStationProblemBankData.aspx",
+    referrer: "https://psms-web.azureedge.net/Student/ViewActiveStationProblemBankData.aspx",
     referrerPolicy: "strict-origin-when-cross-origin",
     body: JSON.stringify(fetchBody),
     method: "POST",
@@ -389,7 +389,7 @@ export async function updateStationInfo(node) {
       const parsed = JSON.parse(data.d)
       if (parsed.length === 0) throw new Error("No problem banks found for this station")
       const current = parsed[0]
-      const response1 = fetch("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx/ViewPB", {
+      const response1 = fetch("https://psms-web.azureedge.net/Student/StationproblemBankDetails.aspx/ViewPB", {
         headers: {
           "accept": "application/json, text/javascript, */*; q=0.01",
           "accept-language": "en-US,en;q=0.9",
@@ -399,14 +399,14 @@ export async function updateStationInfo(node) {
           "cache-control": "no-cache",
           "pragma": "no-cache",
         },
-        referrer: `http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId=${current.CompanyId}&StationId=${current.StationId}&BatchIdFor=${current.BatchIdFor}&PSTypeFor=${current.PSTypeFor}`,
+        referrer: `https://psms-web.azureedge.net/Student/StationproblemBankDetails.aspx?CompanyId=${current.CompanyId}&StationId=${current.StationId}&BatchIdFor=${current.BatchIdFor}&PSTypeFor=${current.PSTypeFor}`,
         referrerPolicy: "strict-origin-when-cross-origin",
         body: "{\"batchid\": \"undefined\" }",
         method: "POST",
         mode: "cors",
         credentials: "include"
       })
-      const response2 = fetch("http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx/StationFacilitiesInfo", {
+      const response2 = fetch("https://psms-web.azureedge.net/Student/StationproblemBankDetails.aspx/StationFacilitiesInfo", {
         headers: {
           "accept": "application/json, text/javascript, */*; q=0.01",
           "accept-language": "en-US,en;q=0.9",
@@ -416,7 +416,7 @@ export async function updateStationInfo(node) {
           "cache-control": "no-cache",
           "pragma": "no-cache",
         },
-        referrer: `http://psd.bits-pilani.ac.in/Student/StationproblemBankDetails.aspx?CompanyId=${current.CompanyId}&StationId=${current.StationId}&BatchIdFor=${current.BatchIdFor}&PSTypeFor=${current.PSTypeFor}`,
+        referrer: `https://psms-web.azureedge.net/Student/StationproblemBankDetails.aspx?CompanyId=${current.CompanyId}&StationId=${current.StationId}&BatchIdFor=${current.BatchIdFor}&PSTypeFor=${current.PSTypeFor}`,
         referrerPolicy: "strict-origin-when-cross-origin",
         body: "{\"StationId\": \"0\"}",
         method: "POST",
